@@ -1,15 +1,25 @@
-# language: pt
-	@CucumberSteps
- 	Feature: Testar uma consulta	ao seguro de imoveis residenciais.
+@Consulta 
+Feature: Testar uma consulta ao seguro de imoveis residenciais. 
+
+	Para conhecer o seguro de imoveis residenciais
+ 	Como um usuário
+ 	Eu quero fazer uma consulta ao seguro de imoveis residenciais
+ 	De modo que eu consiga a página de seguro de imoveis residenciais
  	
- 	Cenario 1: Consulta seguro de imoveis residenciais
- 	
- 	Dado a url "https://www.portoseguro.com.br/ " do site
- 	Quando clicar em no link seguros "seguros"
- 	Entao devera ser redirecionado para a pagina de seguros "https://www.portoseguro.com.br/seguros"
- 	E quando clicar em seguro para imoveis "seguroimoveis"
- 	Entao devera redirecionar para a pagina de seguros de imoveis "https://www.portoseguro.com.br/seguros/seguro-para-imoveis"
- 	E quando clicar em seguro residencia "seguroresidencia"
- 	Entao devera redirecionar para a pagina de seguros de residencia "https://www.portoseguro.com.br/seguros/seguro-para-imoveis/seguro-para-residencia"
- 	
- 	
+@enable 
+@start 
+Scenario Outline: Consulta seguro de imoveis residenciais 
+	Given que eu estou na pagina inicial da porto seguros 
+	When eu clicar no link faca uma cotacao 
+	Then deverei ser redirecionado para a pagina de cotacao 
+	When informar um nome <Nome> Válido
+	And informar um cpf <Cpf> Válido
+	And informar um email <Email> Válido
+	
+	
+	Examples: 
+		| Nome               | Cpf              | Email                    |
+		| "Yohanes Lopes"    | "35020020020"    | "yohaneslopes@gmail.com" |
+		
+		
+ 
